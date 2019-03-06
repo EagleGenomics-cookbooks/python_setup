@@ -24,3 +24,9 @@ directory '/usr/local/pyenv/shims/' do
   mode '0777'
   action :create
 end
+
+# some python packages fail if /etc/localtime does not exist
+# Note, this may not necessarily be confined to python packages
+# installing tzdata ensures that this file is created
+# The default timezone is UTC
+package 'tzdata'
