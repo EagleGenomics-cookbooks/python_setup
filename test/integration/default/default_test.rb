@@ -8,7 +8,6 @@
 describe command('python --version') do
   its(:exit_status) { should eq 0 }
   its(:stdout) { should match('Python 3.6.7') }
-
 end
 
 describe command('pyenv version') do
