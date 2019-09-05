@@ -8,6 +8,6 @@ chef_version '>= 14.10'
 supports 'ubuntu', '= 18.04'
 source_url 'https://github.com/EagleGenomics-cookbooks/python_setup'
 issues_url 'https://github.com/EagleGenomics-cookbooks/python_setup/issues'
-version '0.0.2'
+version '0.0.3'
 
 depends 'pyenv'
