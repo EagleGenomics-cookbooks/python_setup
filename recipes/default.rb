@@ -30,3 +30,5 @@ end
 # installing tzdata ensures that this file is created
 # The default timezone is UTC
 package 'tzdata'
+
+pyenv_pip 'pipenv'
