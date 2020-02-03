@@ -7,10 +7,10 @@
 
 describe command('python --version') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should match('Python 3.6.7') }
+  its(:stdout) { should match('Python 3.7.2') }
 end
 
 describe command('pyenv version') do
   its(:exit_status) { should eq 0 }
-  its(:stdout) { should include('3.6.7') }
+  its(:stdout) { should include('3.7.2') }
 end
