@@ -6,7 +6,7 @@
 
 apt_update if node['platform_family'] == 'debian'
 
-execute "remount the /tmp with exec" do
+execute 'remount the /tmp with exec' do
   command 'sudo mount -o remount,exec /tmp'
 end
 
