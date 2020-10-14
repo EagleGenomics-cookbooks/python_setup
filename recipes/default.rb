@@ -8,7 +8,7 @@ apt_update if node['platform_family'] == 'debian'
 
 mount '/tmp' do
   fstype   'tmpfs'
-  options  'exec'
+  options  'mode=1777'
   action :remount
 end
 
