@@ -6,6 +6,10 @@
 
 apt_update if node['platform_family'] == 'debian'
 
+execute 'Export the TMPDIR path' do
+  command 'export TMPDIR=/home/ubuntu/tmp'
+end
+
 build_essential 'install essential' do
   action :install
 end
