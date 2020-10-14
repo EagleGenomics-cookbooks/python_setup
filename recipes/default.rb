@@ -13,9 +13,9 @@ end
 # Install pyenv globally
 pyenv_system_install 'system'
 
-mount '/tmp' do 
+mount '/tmp' do
   options 'rwx'
-  action   [:remount]
+  action [:remount]
 end
 
 # isntall python version (already installed on ubuntu 18.04)
