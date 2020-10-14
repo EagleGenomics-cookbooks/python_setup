@@ -6,7 +6,10 @@
 
 apt_update if node['platform_family'] == 'debian'
 
-mount -o remount,exec /tmp
+mount '/tmp' do 
+  mode :0755
+  action :remount
+end 
 
 build_essential 'install essential' do
   action :install
