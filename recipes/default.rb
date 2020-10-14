@@ -6,9 +6,8 @@
 
 apt_update if node['platform_family'] == 'debian'
 
-mount '/tmp' do
-  options  'nr_inodes=999k,mode=755,size=500m'
-  action :remount
+execute 'Export the TMPDIR path' do
+  command 'export TMPDIR=/home/ubuntu/tmp'
 end
 
 build_essential 'install essential' do
