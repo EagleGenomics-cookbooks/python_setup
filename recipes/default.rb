@@ -7,7 +7,6 @@
 apt_update if node['platform_family'] == 'debian'
 
 mount '/tmp' do
-  fstype   'tmpfs'
   options  'nr_inodes=999k,mode=755,size=500m'
   action :remount
 end
