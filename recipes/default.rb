@@ -7,7 +7,7 @@
 apt_update if node['platform_family'] == 'debian'
 
 mount '/tmp' do 
-  mode :0755
+  options  'mode=755'
   action :remount
 end 
 
