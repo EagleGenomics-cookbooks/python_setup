@@ -6,16 +6,16 @@
 
 apt_update if node['platform_family'] == 'debian'
 
-execute 'remount the /tmp with exec' do
-  command 'mount -o remount,exec /tmp'
-end
-
 build_essential 'install essential' do
   action :install
 end
 
 # Install pyenv globally
 pyenv_system_install 'system'
+
+execute 'remount the /tmp with exec' do
+  command 'mount -o remount,exec /tmp'
+end
 
 # isntall python version (already installed on ubuntu 18.04)
 pyenv_python node['python']['version']
