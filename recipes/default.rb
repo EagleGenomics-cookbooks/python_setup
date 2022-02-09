@@ -11,7 +11,7 @@ build_essential 'install essential' do
 end
 
 # Install pyenv globally
-pyenv_system_install 'system'
+pyenv_install 'system'
 
 # isntall python version (already installed on ubuntu 18.04)
 pyenv_python node['python']['version']
