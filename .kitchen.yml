@@ -1,18 +1,23 @@
 ---
 driver:
-  name: docker
-
+  name: dokken
+  privileged: true 
+transport:
+  name: dokken
 provisioner:
-  name: chef_zero
-  product_version: '14.10'
-  product_name: chef
-    
+  name: dokken
+  
 verifier:
   name: inspec
   sudo_command: . /etc/profile;
 
 platforms:
   - name: ubuntu-18.04
+    driver:
+      image: dokken/ubuntu-18.04
+      pid_one_command: /bin/systemd
+      intermediate_instructions:
+        - RUN /usr/bin/apt-get update
 
 suites:
   - name: default
@@ -21,4 +26,3 @@ suites:
     verifier:
       inspec_tests:
         - test/integration/default
-    attributes:

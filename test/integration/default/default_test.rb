@@ -1,4 +1,4 @@
-# # encoding: utf-8
+
 
 # Inspec test for recipe python_setup::default
 

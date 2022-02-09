@@ -1,12 +1,12 @@
 require 'cookstyle'
 require 'rubocop/rake_task'
-require 'foodcritic'
 require 'rspec/core/rake_task'
+require 'yaml'
 
-RuboCop::RakeTask.new do |task|
+RuboCop::RakeTask.new(:cookstyle) do |task|
   task.options << '--display-cop-names'
 end
-FoodCritic::Rake::LintTask.new(:foodcritic)
+# FoodCritic::Rake::LintTask.new(:foodcritic)
 RSpec::Core::RakeTask.new(:rspec)
 
 begin
@@ -19,8 +19,8 @@ rescue LoadError
   puts '>>>>> Kitchen gem not loaded, omitting tasks' unless ENV['CI']
 end
 
-desc 'Run all pre-convergence test: rubocop, foodcritic, rspec'
-task tests: %i(rubocop foodcritic rspec)
+desc 'Run all pre-convergence test: rubocop, cookstyle rspec'
+task tests: %i(cookstyle rspec)
 
 desc 'Run kitchen: includes destroy, converge, verify - default: all'
 task kitchen: [:all]
