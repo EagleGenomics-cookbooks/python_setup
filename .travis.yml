@@ -1,4 +1,4 @@
-dist: Bionic
+dist: bionic
 
 before_install:
   - wget https://packages.chef.io/files/stable/chef-workstation/21.10.640/ubuntu/18.04/chef-workstation_21.10.640-1_amd64.deb
