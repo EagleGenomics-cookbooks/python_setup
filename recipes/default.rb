@@ -4,14 +4,14 @@
 #
 # Copyright:: 2019, Eagle Genomics Ltd, All Rights Reserved.
 
-apt_update if node['platform_family'] == 'debian'
+apt_update if platform_family?('debian')
 
 build_essential 'install essential' do
   action :install
 end
 
 # Install pyenv globally
-pyenv_system_install 'system'
+pyenv_install 'system'
 
 # isntall python version (already installed on ubuntu 18.04)
 pyenv_python node['python']['version']

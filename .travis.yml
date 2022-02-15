@@ -1,8 +1,8 @@
-dist: xenial
+dist: bionic
 
 before_install:
-  - wget https://packages.chef.io/files/stable/chefdk/3.7.23/ubuntu/16.04/chefdk_3.7.23-1_amd64.deb
-  - sudo dpkg -i chefdk_3.7.23-1_amd64.deb
+  - wget https://packages.chef.io/files/stable/chef-workstation/21.10.640/ubuntu/18.04/chef-workstation_21.10.640-1_amd64.deb
+  - sudo dpkg -i chef-workstation_21.10.640-1_amd64.deb
   - chef --version
 
 install: echo "skip bundle install"
@@ -10,6 +10,7 @@ install: echo "skip bundle install"
 branches:
   only:
   - master
+  - /^feature-.*$/
 
 env:
   matrix:
@@ -18,12 +19,11 @@ env:
 before_script:
 - sudo iptables -L DOCKER || ( echo "DOCKER iptables chain missing" ; sudo iptables
   -N DOCKER )
-- eval "$(/opt/chefdk/bin/chef shell-init bash)"
-- chef gem install kitchen-docker
-- /opt/chefdk/bin/chef exec rake tests
+- eval "$(/opt/chef-workstation/bin/chef shell-init bash)"
+- /opt/chef-workstation/bin/chef exec rake tests
 
 script:
-- /opt/chefdk/embedded/bin/kitchen verify ${INSTANCE}
+- /opt/chef-workstation/embedded/bin/kitchen verify ${INSTANCE}
 
 after_script:
-- /opt/chefdk/embedded/bin/kitchen destroy ${INSTANCE}
+- /opt/chef-workstation/embedded/bin/kitchen destroy ${INSTANCE}
